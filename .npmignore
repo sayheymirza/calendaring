@@ -1,0 +1,7 @@
+/.gihub
+/docs
+/lib
+/test
+jest.config.js
+README.md
+tsconfig.js
