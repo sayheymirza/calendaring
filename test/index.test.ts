@@ -65,4 +65,25 @@ describe("lib/index.ts", () => {
     expect(output.array[29]).toEqual({ day: 27, value: "foo-bar" });
     expect(output.array[33]).toEqual({ day: 31, value: null });
   });
+
+  it('should "1401/08" start from saturday', ()=> {
+    calendaring.SetFormatter('jalali')
+
+    const output = calendaring.Generate(1401, 8);
+
+    expect(output.count).toBe(30);
+    expect(output.length).toBe(31);
+    expect(output.array[0].day).toBe(0);    
+  })
+  
+  it('should "1401/07" start from friday', ()=>{
+    calendaring.SetFormatter('jalali')
+  
+    const output = calendaring.Generate(1401, 7);
+  
+    expect(output.count).toBe(30);
+    expect(output.length).toBe(36);
+    expect(output.array[5].day).toBe(0);
+    expect(output.array[6].day).toBe(1);
+  })
 });

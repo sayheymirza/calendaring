@@ -50,11 +50,12 @@ export class Calendaring {
 
     // get last day of the month from the first day of the month
     const last_day_of_month = first_day_of_month.endOf(
-      this.Format == "jalali" ? "jMonth" : "month"
+      this.Formatter == "jalali" ? "jMonth" : "month"
     );
 
-    const index_first_day_of_month = first_day_of_month.day() - 1; // it start from 1 not 0 for array index
     const count_of_days_in_month = last_day_of_month.get("D");
+    
+    const index_first_day_of_month = first_day_of_month.day() - (this.Formatter == 'jalali' && count_of_days_in_month == 30 ? 0 : 1); // it start from 1 not 0 for array index
     const length_of_days_in_month =
       index_first_day_of_month + count_of_days_in_month;
 
