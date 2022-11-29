@@ -65,25 +65,90 @@ describe("lib/index.ts", () => {
     expect(output.array[29]).toEqual({ day: 27, value: "foo-bar" });
     expect(output.array[33]).toEqual({ day: 31, value: null });
   });
-
-  it('should "1401/08" start from saturday', ()=> {
-    calendaring.SetFormatter('jalali')
-
-    const output = calendaring.Generate(1401, 8);
-
-    expect(output.count).toBe(30);
-    expect(output.length).toBe(31);
-    expect(output.array[0].day).toBe(0);    
-  })
   
   it('should "1401/07" start from friday', ()=>{
     calendaring.SetFormatter('jalali')
-  
+    
     const output = calendaring.Generate(1401, 7);
-  
+    
     expect(output.count).toBe(30);
     expect(output.length).toBe(36);
     expect(output.array[5].day).toBe(0);
     expect(output.array[6].day).toBe(1);
+  })
+  
+    it('should "1401/08" start from saturday', ()=> {
+      calendaring.SetFormatter('jalali')
+  
+      const output = calendaring.Generate(1401, 8);
+  
+      expect(output.count).toBe(30);
+      expect(output.length).toBe(31);
+      expect(output.array[0].day).toBe(0);    
+    })
+  
+  it('should "1401/09" start from tuesday', ()=>{
+    calendaring.SetFormatter('jalali')
+  
+    const output = calendaring.Generate(1401, 9);
+  
+    expect(output.count).toBe(30);
+    expect(output.length).toBe(33);
+  })
+  
+  it('should "1401/10" start from thursday', ()=>{
+    calendaring.SetFormatter('jalali')
+  
+    const output = calendaring.Generate(1401, 10);
+  
+    expect(output.count).toBe(30);
+    expect(output.length).toBe(35);
+  })
+  
+  it('should "1401/11" start from saturday', ()=>{
+    calendaring.SetFormatter('jalali')
+  
+    const output = calendaring.Generate(1401, 11);
+  
+    expect(output.count).toBe(30);
+    expect(output.length).toBe(37);
+  })
+  
+  it('should "1401/12" start from monday', ()=>{
+    calendaring.SetFormatter('jalali')
+  
+    const output = calendaring.Generate(1401, 12);
+  
+    expect(output.count).toBe(29);
+    expect(output.length).toBe(31);
+  })
+  
+  it('should "1402/01" start from tuesday', ()=>{
+    calendaring.SetFormatter('jalali')
+  
+    const output = calendaring.Generate(1402, 1);    
+  
+    expect(output.count).toBe(31);
+    expect(output.length).toBe(34);
+    expect(output.array[1].day).toBe(0);
+    expect(output.array[3].day).toBe(1);
+  })
+  
+  it('should "1402/02" start from friday', ()=>{
+    calendaring.SetFormatter('jalali')
+  
+    const output = calendaring.Generate(1402, 2);    
+
+    expect(output.count).toBe(31);
+    expect(output.length).toBe(37);
+  })
+  
+  it('should "1399/12" start from friday', ()=>{
+    calendaring.SetFormatter('jalali')
+  
+    const output = calendaring.Generate(1399, 12);
+
+    expect(output.count).toBe(30);
+    expect(output.length).toBe(36);
   })
 });
