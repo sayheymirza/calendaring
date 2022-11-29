@@ -76,6 +76,10 @@ export class Calendaring {
       }
     );
 
+    if(array.slice(0, 7).every((item)=> item.day == 0)) {
+      array.splice(0, 7)
+    }
+
     return {
       array: array,
       count: count_of_days_in_month,
