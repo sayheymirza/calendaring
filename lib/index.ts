@@ -54,8 +54,8 @@ export class Calendaring {
     // );
 
     const count_of_days_in_month = first_day_of_month.daysInMonth(); //last_day_of_month.get("D");
-    
-    const index_first_day_of_month = first_day_of_month.get('d') + 1;
+
+    const index_first_day_of_month = first_day_of_month.get("d") + 1;
 
     const length_of_days_in_month =
       index_first_day_of_month + count_of_days_in_month;
@@ -76,14 +76,27 @@ export class Calendaring {
       }
     );
 
-    if(array.slice(0, 7).every((item)=> item.day == 0)) {
-      array.splice(0, 7)
+    if (array.slice(0, 7).every((item) => item.day == 0)) {
+      array.splice(0, 7);
+    }
+
+    // in gregorian calendar first day is sunday :)
+    if (this.Formatter == "gregorian") {
+      if (array[0].day == 1) {
+        array.unshift(
+          ...Array.from({ length: 6 }, (_) => ({ day: 0, value: null }))
+        );
+      } else {
+        array.splice(0, 1);
+      }
     }
 
     return {
       array: array,
       count: count_of_days_in_month,
-      length: length_of_days_in_month,
+      length: array.length,
     };
   }
 }
+
+export * from "./interface";
